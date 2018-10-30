@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   var step12Btn = document.querySelector('#step12 button'),
   step3456Btn = document.querySelector('#step3456 button'),
+  step7Btn = document.querySelector('#step7 button'),
   pingPongBtn = document.querySelector('#pingPongBtn'),
   pingorpong = 'ping';
   pingPongData = true;
@@ -31,8 +32,16 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  pingPongBtn.addEventListener('click', pingPong);
+  step7Btn.addEventListener('click', function() {
+    axios({
+      url: 'http://intro-ajax-api.herokuapp.com/count',
+      method: 'get',
+      data: '',
+      dataType: 'text'
+    });
+  });
 
+  pingPongBtn.addEventListener('click', pingPong);
   function pingPong() {
     if (pingorpong === 'ping') {
       pingorpong = 'pong';
@@ -41,4 +50,5 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     document.querySelector('#pingorpong').innerHTML = pingorpong
   }
+
 });
