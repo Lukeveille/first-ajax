@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
   step3456Btn = document.querySelector('#step3456 button'),
   step7Btn = document.querySelector('#step7 button'),
   step8Btn = document.querySelector('#step8 button'),
+  step9Btn = document.querySelector('#step9 button'),
   pingPongBtn = document.querySelector('#pingPongBtn'),
   pingorpong = 'ping',
   rootURL = 'http://intro-ajax-api.herokuapp.com/';
@@ -11,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function() {
     axios({
       url: rootURL,
       method: 'get',
-      data: '',
       dataType: 'text'
     });
   });
@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function() {
     axios({
       url: rootURL + pingorpong,
       method: 'get',
-      data: '',
       dataType: 'text'
     }).then(function(response) {
       console.log(response.data);
@@ -46,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function() {
     axios({
       url: rootURL + 'count',
       method: 'get',
-      data: '',
       dataType: 'text'
     });
   });
@@ -63,5 +61,15 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
+  step9Btn.addEventListener('click', function() {
+    axios({
+      url: rootURL + 'a_car',
+      method: 'get',
+      dataType: 'html'
+    }).then(function(response) {
+      var step9List = document.querySelector('#step9List');
+      step9List.innerHTML += response.data;
+    });
+  });
 
 });
